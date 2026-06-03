@@ -1,0 +1,13 @@
+# Lore docs use the five GFM-native alert types: NOTE, TIP, IMPORTANT,
+# WARNING, CAUTION. INFO and DANGER are not GFM-native and won't render
+# on GitHub.
+# Documented in: docs/developing/doc-standards/canon/format.md#callouts-and-admonitions
+
+extends: existence
+message: "Lore docs use the GFM-native alert types only. '%s' is not GFM and won't render on GitHub."
+link: docs/developing/doc-standards/canon/format.md#callouts-and-admonitions
+level: warning
+nonword: true
+tokens:
+  - '> \[!INFO\]'
+  - '> \[!DANGER\]'

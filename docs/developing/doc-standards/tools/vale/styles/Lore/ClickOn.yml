@@ -1,0 +1,14 @@
+# Use `click`, not `click on`. Left-button click is implied.
+# Documented in: docs/developing/doc-standards/canon/language.md#action-verbs
+
+extends: substitution
+message: "Use '%s' instead of '%s'."
+link: docs/developing/doc-standards/canon/language.md#action-verbs
+level: warning
+ignorecase: true
+action:
+  name: replace
+swap:
+  click on: click
+  right-click on: right-click
+  double-click on: double-click

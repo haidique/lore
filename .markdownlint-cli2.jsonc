@@ -1,0 +1,34 @@
+{
+  // Lore docs markdownlint config. v1: lean on defaults; disable only the
+  // rules that mechanically conflict with the project's structure.
+  // See docs/developing/doc-standards/tools/README.md for usage.
+  "config": {
+    "default": true,
+
+    // Line length is not enforced in Lore docs. Prose wraps for the reader's
+    // editor, not for an 80-col gate.
+    "MD013": false,
+
+    // HTML comments are used in templates ("<!-- delete after copying -->").
+    // No other inline HTML is authored in Lore docs.
+    "MD033": false,
+
+    // Type templates legitimately repeat H3s ("Definition", "When to Use It")
+    // across H2 sections. Allow duplicates within siblings only.
+    "MD024": { "siblings_only": true },
+
+    // Lore docs require a body H1 that matches the frontmatter `title`.
+    // markdownlint's default counts the frontmatter title as a heading and
+    // flags the body H1 as a duplicate. Disable the frontmatter scan so only
+    // body H1s count toward the "single H1" rule.
+    "MD025": { "front_matter_title": "" }
+  },
+  "globs": [
+    "docs/**/*.md",
+    "README.md"
+  ],
+  "ignores": [
+    "**/node_modules/**",
+    "**/target/**"
+  ]
+}

@@ -1,0 +1,27 @@
+extends: spelling
+message: "Possible misspelling: '%s'."
+level: warning
+link: https://vale.sh/docs/checks/spelling
+# append: true keeps the default American English dictionary active.
+append: true
+# Vocabulary words (Lore/accept.txt) are loaded automatically via the
+# Vocab directive in .vale.ini and don't need to be repeated here.
+filters:
+  # Uppercase acronyms (HTTP, YAML, ADR, JWT, mTLS, gRPC, QUIC, CRDT)
+  - '[A-Z]{2,}[a-z]?[A-Z]?[A-Za-z]*'
+  # camelCase and PascalCase identifiers (myFlag, MyStruct, RocksDB)
+  - '[a-z]+[A-Z][a-zA-Z]+'
+  # Mixed-case tokens with digits (log4j, sha256, IPv4, en_US)
+  - '[a-zA-Z]*[0-9]+[a-zA-Z0-9]*'
+  # CLI flags and hyphenated slugs (--force, --max-redirects, lore-style)
+  - '--?[a-zA-Z][a-zA-Z0-9-]+'
+  # File extensions and dotted identifiers (.md, .yml, .toml, foo.bar)
+  - '\.[a-zA-Z]{1,8}\b'
+  # snake_case identifiers (config_key, my_var)
+  - '_?[a-zA-Z]+_[a-zA-Z0-9_]+'
+  # Underscore-prefixed identifiers (_id, _doc)
+  - '_[a-zA-Z][a-zA-Z0-9_]*'
+  # Email and URL-like tokens
+  - '[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+'
+  # Semver-ish version strings (v0.5, 1.2.3)
+  - 'v?\d+\.\d+(?:\.\d+)?(?:-\w+)?'

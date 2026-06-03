@@ -1,0 +1,68 @@
+# Lore project vocabulary. Accepted by Lore.Spelling (and the default
+# Vale.Spelling, if it's ever re-enabled). Entries are case-sensitive
+# regex (see https://vale.sh/docs/keys/vocab). Use `[Aa]word` form for
+# words that legitimately appear in both cases (sentence-leading capital
+# + mid-sentence lowercase).
+#
+# Acronyms (HTTP, ADR, JWT, mTLS, gRPC, QUIC, CRDT, IPs, SDKs, etc.),
+# camelCase identifiers, CLI flags, file extensions, and version strings
+# are all caught by the regex filters in `Lore/Spelling.yml` — no vocab
+# entries needed for those classes. Add a term here only when it's a
+# real word the docs use intentionally that the Hunspell dictionary
+# doesn't include.
+
+# Acronym variants the regex filter doesn't catch (apostrophe form):
+ADR's
+Git's
+
+# Tools and products referenced by name:
+Excalidraw
+markdownlint
+napi-rs
+npm
+
+# Lore-specific or revision-control jargon:
+[Nn]exus
+lede
+Perforce-isms
+
+# English words missing from Vale's bundled Hunspell dictionary:
+allowlist
+args
+auditability
+autolink
+backlinks
+[Cc]allout
+[Cc]allouts
+[Cc]ollapsibles
+[Cc]onfig
+[Cc]onfigs
+deduplicated
+diffable
+enum
+[Ee]rrored
+[Ff]rontmatter
+hostnames
+[Ll]owercase
+lowercased
+pagetree
+px
+relitigating
+reframed
+repo
+ruleset
+Setext
+stderr
+strawman
+subtree
+[Ss]uperfences
+triaged
+uncopyable
+unfurlers
+unspaced
+vendored
+walkthrough
+walkthroughs
+whitepaper
+wordlist
+zsh

@@ -1,0 +1,17 @@
+# Lore docs use denylist/allowlist, not blacklist/whitelist.
+# Documented in: docs/developing/doc-standards/canon/language.md#other-terms-to-avoid
+
+extends: substitution
+message: "Use '%s' instead of '%s'."
+link: docs/developing/doc-standards/canon/language.md#other-terms-to-avoid
+level: error
+ignorecase: true
+action:
+  name: replace
+swap:
+  blacklist: denylist
+  whitelist: allowlist
+  blacklisted: denylisted
+  whitelisted: allowlisted
+  blacklisting: denylisting
+  whitelisting: allowlisting

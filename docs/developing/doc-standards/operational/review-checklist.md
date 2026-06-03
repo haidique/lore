@@ -9,7 +9,7 @@ Walk only the sections that apply to your change — each section states when it
 - **New doc or substantial new section:** Above + [New doc or substantial new section](#new-doc-or-substantial-new-section).
 - **Tutorial or How-To page:** Above + [Tutorial or How-To pages](#tutorial-or-how-to-pages).
 - **Doc includes images, diagrams, or video:** Add [When media is present](#when-media-is-present).
-- **ADR — new or status update:** [Architectural decision record](#architectural-decision-record-new-or-status-update) only.
+- **ADR — new or status update:** [Architectural decision record](#architectural-decision-record--new-or-status-update) only.
 
 ## Always
 

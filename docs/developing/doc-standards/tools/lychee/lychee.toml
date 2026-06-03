@@ -1,0 +1,90 @@
+# Lychee configuration for the Lore docs pipeline.
+# Pass via `--config docs/developing/doc-standards/tools/lychee/lychee.toml`.
+# Used by manual invocations and any automation that wraps lychee.
+# See README.md in this directory for the canonical invocation and pitfalls.
+
+# --- Display ----------------------------------------------------------------
+
+# Quiet by default; humans can pass --verbose info inline.
+no_progress = true
+
+# --- Cache ------------------------------------------------------------------
+
+cache = true
+max_cache_age = "2d"               # balances freshness vs repeat-run cost
+cache_exclude_status = "500.."     # don't cache 5xx — likely transient
+
+# --- Network ----------------------------------------------------------------
+
+timeout = 15
+max_redirects = 10
+max_retries = 2
+retry_wait_time = 2
+max_concurrency = 32
+host_concurrency = 4
+host_request_interval = "100ms"
+
+# --- Request ----------------------------------------------------------------
+
+# GET, not HEAD — some hosts (learn.microsoft.com, GitHub release tags) reject
+# HEAD or return misleading status codes.
+method = "get"
+
+# require_https left at default (false). Tutorials link to http://localhost
+# and http://127.0.0.1 intentionally; do not flip this on.
+
+# --- Inputs / discovery -----------------------------------------------------
+
+# Only scan Markdown when given a directory.
+extensions = ["md", "markdown"]
+
+# Lychee respects .gitignore by default; .urcignore (Lore's equivalent) is not
+# auto-detected, so any noise outside `exclude_path` must be handled there.
+
+exclude_path = [
+    "target",
+    "vendor",
+    "\\.lore",
+    "\\.crowd",
+    "\\.victorinox",
+    "\\.nox",
+    "node_modules",
+    "\\.cargo",
+    "docs/release-notes\\.md",     # historical changelog; no external links
+    ".*-template\\.md",            # type templates use placeholder relative paths
+]
+
+# --- Filtering --------------------------------------------------------------
+
+# Statuses we accept as "reachable":
+#   100..=103  informational
+#   200..=299  success
+#   401, 403   many real URLs return these to anonymous fetches
+#              (learn.microsoft.com, private GitHub PRs, anti-bot pages).
+#              Treating as broken is high false-positive.
+#   429        rate-limited; the URL exists, just throttled.
+accept = ["100..=103", "200..=299", "401", "403", "429"]
+
+# Verify anchor links (path.md#heading-slug).
+# Values: "none", "anchor-only", "text-only", "full". Lore docs use named
+# anchors, not text fragments, so "anchor-only" is the right scope.
+include_fragments = "anchor-only"
+
+# Don't check email addresses found in docs.
+include_mail = false
+
+# Lore docs in `docs/` are public-facing. Internal-only hostnames are NOT
+# excluded — if one appears under `docs/`, that is a failure by design and
+# must be removed before merge. Internal doc trees not present in the public
+# repository are handled automatically by `scripts/docs-lint.sh`.
+#
+# The patterns below are non-org-revealing placeholders: localhost / loopback
+# (intentional in tutorials) and example.com (intentional in canon samples).
+# Patterns are anchored with `^https?://` so substring matches can't
+# accidentally exempt a public host with the same suffix.
+exclude = [
+    "^https?://localhost(:[0-9]+)?(/|$)",
+    "^https?://127\\.0\\.0\\.1(:[0-9]+)?(/|$)",
+    "^https?://lorelocal(:[^/]*)?(/|$)",
+    "^https?://example\\.com(/|$)",
+]

@@ -1,4 +1,4 @@
-# Code Standards
+# Code standards
 
 Coding conventions governing how Lore source is written.
 
@@ -8,6 +8,6 @@ Per-language, per-area conventions for error handling, logging, task spawning, t
 
 ## Suggested starting points
 
-- **Writing a new Code Standard page?** Start at the [doc-standards walkthrough](../developing/doc-standards/writing-a-doc.md).
+- **Writing a new Code Standard page?** Start at the [doc-standards walkthrough](../doc-standards/writing-a-doc.md).
 
 See [docs/README.md](../README.md) for the full docs structure.

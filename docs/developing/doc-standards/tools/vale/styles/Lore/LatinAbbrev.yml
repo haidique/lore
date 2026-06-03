@@ -1,0 +1,19 @@
+# Latin abbreviations are not used in Lore docs.
+# Documented in: docs/developing/doc-standards/canon/language.md#no-latin-abbreviations
+#
+# Microsoft Foreign.yml partially overlaps; this rule provides a substitution
+# action and a Lore-specific message.
+
+extends: substitution
+message: "Spell it out: use '%s' instead of '%s'."
+link: docs/developing/doc-standards/canon/language.md#no-latin-abbreviations
+level: warning
+ignorecase: true
+action:
+  name: replace
+swap:
+  '\bcf\.': compare
+  '\be\.g\.': for example
+  '\betc\.': and so on
+  '\bi\.e\.': that is
+  '\bn\.b\.': Note

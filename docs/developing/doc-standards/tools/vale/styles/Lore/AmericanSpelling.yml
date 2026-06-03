@@ -1,0 +1,37 @@
+# Lore docs use American English spellings. The Microsoft Vale package covers
+# a small subset (afterwards, adaptor, plus a few unit casings); the bulk of
+# common British/American differences live here.
+# Rule home: docs/developing/doc-standards/canon/language.md
+# (Mechanical adherence to the Microsoft Writing Style Guide baseline.)
+
+extends: substitution
+message: "Lore docs use American English. Use '%s' instead of '%s'."
+link: docs/developing/doc-standards/canon/language.md
+level: warning
+ignorecase: true
+action:
+  name: replace
+swap:
+  cancelling: canceling
+  cancelled: canceled
+  colour: color
+  defence: defense
+  favour: favor
+  favourite: favorite
+  honour: honor
+  modelling: modeling
+  modelled: modeled
+  optimise: optimize
+  optimised: optimized
+  optimisation: optimization
+  organise: organize
+  organised: organized
+  organisation: organization
+  realise: realize
+  realised: realized
+  visualise: visualize
+  visualised: visualized
+  visualisation: visualization
+  whilst: while
+  backwards: backward
+  towards: toward

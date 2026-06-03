@@ -1,0 +1,14 @@
+# Permission-implying verbs in the "lets you do X" sense are banned.
+# Documented in: docs/developing/doc-standards/canon/language.md#permission-verbs
+#
+# `enable` is correct only when literally turning a feature on or off
+# ("Enable the pre-commit hook"). The pattern requires a "you/users/the user"
+# object, so the literal-toggle usage does not fire.
+
+extends: existence
+message: "Avoid permission-implying '%s'. The software is not a gatekeeper. Rewrite as 'you can ...' or use the imperative."
+link: docs/developing/doc-standards/canon/language.md#permission-verbs
+level: warning
+ignorecase: true
+tokens:
+  - (?:allows?|lets?|permits?|enables?) (?:you|users?|the user)

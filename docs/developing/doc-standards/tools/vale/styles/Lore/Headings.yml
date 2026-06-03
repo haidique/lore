@@ -1,0 +1,38 @@
+extends: capitalization
+message: "'%s' should use sentence-style capitalization."
+link: https://docs.microsoft.com/en-us/style-guide/capitalization
+level: warning
+scope: heading
+match: $sentence
+indicators:
+  - ':'
+exceptions:
+  - ADR
+  - Azure
+  - CLI
+  - Code
+  - Code-Standard
+  - Cosmos
+  - Diátaxis
+  - Docker
+  - Emmet
+  - Git
+  - How-To
+  - I
+  - Kubernetes
+  - Latin
+  - Linux
+  - Lore
+  - macOS
+  - Marketplace
+  - Mermaid
+  - MkDocs
+  - MongoDB
+  - REPL
+  - Studio
+  - TypeScript
+  - URLs
+  - Visual
+  - VS
+  - Windows
+  - YAML

@@ -1,0 +1,10 @@
+# Adverbs ending in -ly do not take a hyphen in compound modifiers.
+# Rule home: docs/developing/doc-standards/canon/format.md#hyphenation
+# (Microsoft-style baseline; Microsoft Vale doesn't catch it.)
+
+extends: existence
+message: "Drop the hyphen — '%s' uses an -ly adverb, which already signals modification."
+link: docs/developing/doc-standards/canon/format.md#hyphenation
+level: warning
+tokens:
+  - '\b\w+ly-\w+'

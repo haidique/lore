@@ -1,0 +1,12 @@
+# `and/or` and `either/or` are ambiguous. Pick the conjunction you mean.
+# Documented in: docs/developing/doc-standards/canon/language.md#other-terms-to-avoid
+
+extends: existence
+message: "Rewrite '%s' — pick 'and' or 'or' (whichever you mean)."
+link: docs/developing/doc-standards/canon/language.md#other-terms-to-avoid
+level: warning
+ignorecase: true
+nonword: true
+tokens:
+  - '\band/or\b'
+  - '\beither/or\b'

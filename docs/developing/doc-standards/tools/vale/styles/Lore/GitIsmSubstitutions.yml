@@ -1,0 +1,17 @@
+# Lore vocabulary, not Git-isms. Direct substitutions for terms with a clear
+# Lore equivalent.
+# Documented in: docs/developing/doc-standards/canon/language.md#lore-vocabulary-not-git-isms
+
+extends: substitution
+message: "Lore uses '%s', not '%s'."
+link: docs/developing/doc-standards/canon/language.md#lore-vocabulary-not-git-isms
+level: warning
+ignorecase: true
+action:
+  name: replace
+swap:
+  working copy: working tree
+  '\bHEAD\b': latest
+  '\bgit index\b': stage
+  '\bgit pull\b': lore sync
+  '\bgit fetch\b': lore sync

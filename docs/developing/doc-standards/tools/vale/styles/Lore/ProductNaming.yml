@@ -1,0 +1,12 @@
+# Lore product naming. `Lore` alone covers the product. When you need to name
+# a specific part, use Lore CLI / Lore Server / Lore library — those are
+# allowed. Generic qualifiers (tool, software, application, product, system)
+# are still redundant.
+# Documented in: docs/developing/doc-standards/canon/language.md#lore-product-naming
+
+extends: existence
+message: "Drop the qualifier — '%s' is redundant. Use 'Lore' alone, or name a specific part (Lore CLI, Lore Server, Lore library)."
+link: docs/developing/doc-standards/canon/language.md#lore-product-naming
+level: warning
+tokens:
+  - the Lore (?:tool|software|application|product|system)

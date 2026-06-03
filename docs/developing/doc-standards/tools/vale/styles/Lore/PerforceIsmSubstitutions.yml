@@ -1,0 +1,17 @@
+# Perforce-isms with a clean Lore equivalent. Direct substitutions.
+# Documented in: docs/developing/doc-standards/canon/language.md#lore-vocabulary-not-git-isms
+
+extends: substitution
+message: "Lore uses '%s', not Perforce's '%s'."
+link: docs/developing/doc-standards/canon/language.md#lore-vocabulary-not-git-isms
+level: warning
+ignorecase: true
+action:
+  name: replace
+swap:
+  '\bchangelist\b': revision
+  '\bchangelists\b': revisions
+  '\bp4 integrate\b': lore branch merge
+  '\bp4 sync\b': lore sync
+  '\bp4 submit\b': lore commit
+  '\bp4 revert\b': lore reset

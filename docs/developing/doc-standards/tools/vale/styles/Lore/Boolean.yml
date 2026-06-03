@@ -1,0 +1,13 @@
+# `Boolean` is capitalized in prose (named after George Boole).
+# Documented in: docs/developing/doc-standards/canon/language.md#other-terms-to-avoid
+
+extends: substitution
+message: "Use '%s' instead of '%s' (capitalize after George Boole)."
+link: docs/developing/doc-standards/canon/language.md#other-terms-to-avoid
+level: warning
+ignorecase: false
+action:
+  name: replace
+swap:
+  '\bboolean\b': Boolean
+  '\bbooleans\b': Booleans

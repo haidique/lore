@@ -1,0 +1,15 @@
+# Banned link text. Link text must describe the destination.
+# Documented in: docs/developing/doc-standards/canon/language.md#link-text
+
+extends: existence
+message: "Banned link text '%s'. Link text must describe the destination."
+link: docs/developing/doc-standards/canon/language.md#link-text
+level: error
+ignorecase: true
+nonword: true
+tokens:
+  - '\[click here\]\('
+  - '\[here\]\('
+  - '\[this\]\('
+  - '\[read more\]\('
+  - '\[link\]\('

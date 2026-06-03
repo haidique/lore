@@ -6,7 +6,7 @@ The "what shape the page takes" half of the standards: headings, lists, tables, 
 
 ### Hierarchy
 
-Every page has exactly one H1. It is the page title, in sentence case. The H1 ensures a visible title on every reading surface (GitHub, editors, and the rendered site). Body sections below the H1 start at H2.
+Every page has exactly one H1. It's the page title, in sentence case. The H1 ensures a visible title on every reading surface (GitHub, editors, and the rendered site). Body sections below the H1 start at H2.
 
 Default top body level is H2; subsections are H3. Avoid H4 unless the subject genuinely needs a fourth level. Don't use H5 or H6.
 
@@ -226,7 +226,7 @@ Lore docs render on two surfaces: GitHub (raw Markdown) and the published site t
 | Feature | Extension or theme flag | What it gives you |
 | --- | --- | --- |
 | GFM alert rendering | `gfm_admonition` | Converts `> [!NOTE]` / `> [!IMPORTANT]` / `> [!WARNING]` etc. to Material admonitions at parse time. Required for callouts to render as styled boxes on the published site. (`markdown-gfm-admonition` package.) |
-| Content tabs | `pymdownx.tabbed` | Side-by-side variants of the same content (e.g. per-platform install steps). |
+| Content tabs | `pymdownx.tabbed` | Side-by-side variants of the same content (for example, per-platform install steps). |
 | Collapsible blocks | `pymdownx.details` | `???` and `???+` collapsibles. |
 | Rich code fences | `pymdownx.superfences` | Nested fences inside lists, tabs, and admonitions. |
 | Code copy button | `content.code.copy` | Adds a copy icon to every code block. Free; no syntax change. |
@@ -234,13 +234,13 @@ Lore docs render on two surfaces: GitHub (raw Markdown) and the published site t
 | HTML attributes | `attr_list` | Per-element classes and IDs via `{ .class #id }`. |
 | HTML in Markdown | `md_in_html` | Lets Markdown inside `<div>` blocks still parse as Markdown. |
 
-Several of these have no GFM equivalent and will not render on GitHub. The copy button and code annotations are free — they cost the reader nothing on GitHub because the syntax is invisible. Tabs, collapsibles, and `attr_list` change the source enough to matter.
+Several of these have no GFM equivalent and won't render on GitHub. The copy button and code annotations are free — they cost the reader nothing on GitHub because the syntax is invisible. Tabs, collapsibles, and `attr_list` change the source enough to matter.
 
 ### When to reach for a Material-only feature
 
-Ask: *would this doc be meaningfully worse without it?* If the alternative is a long parallel subsection structure, a hard-to-scan list, or three near-duplicate procedures, a Material feature probably earns its keep. If the alternative is a single short list, plain Markdown wins.
+Ask: *would this doc be worse without it?* If the alternative is a long parallel subsection structure, a hard-to-scan list, or three near-duplicate procedures, a Material feature probably earns its keep. If the alternative is a single short list, plain Markdown wins.
 
-A counter-example is admonitions: GFM alerts render on both surfaces and are strictly better than `!!! note`, so the rule there is closed — see the section above. Tabs are open because there is no GFM equivalent.
+A counter-example is admonitions: GFM alerts render on both surfaces and are better than `!!! note`, so the rule there is closed — see the section above. Tabs are open because there is no GFM equivalent.
 
 ### Content tabs
 
@@ -265,16 +265,16 @@ Use content tabs for parallel content that the reader will pick exactly one of: 
 `````
 
 > [!IMPORTANT]
-> Content inside a tab must be indented by **four spaces**, not two. This is the most common authoring mistake — the page renders, but the nested list or code fence silently falls outside the tab. If a code block inside a tab is itself fenced, indent the entire fence by four spaces as well.
+> Content inside a tab must be indented by **four spaces**, not two. This is the most common authoring mistake — the page renders, but the nested list or code fence falls outside the tab with no error. If a code block inside a tab is itself fenced, indent the entire fence by four spaces as well.
 
-Don't hide load-bearing instructions inside tabs. A reader who needs all platforms (e.g. setting up CI on Linux after developing on macOS) shouldn't have to click through every tab to discover what's identical and what differs — if more than half the steps repeat across tabs, pull the shared steps out and tab only the divergent parts.
+Don't hide load-bearing instructions inside tabs. A reader who needs all platforms (for example, setting up CI on Linux after developing on macOS) shouldn't have to click through every tab to discover what's identical and what differs — if more than half the steps repeat across tabs, pull the shared steps out and tab only the divergent parts.
 
 ### Researching further capabilities
 
 Material ships features frequently and training data drifts. When you need a feature not covered here, use the `context7` MCP to read current docs rather than guessing:
 
 1. Call `resolve-library-id` with `libraryName: "Material for MkDocs"`. It returns the Context7 ID `/squidfunk/mkdocs-material`.
-2. Call `query-docs` with that ID and a specific question — for example, *"How do I use content tabs with nested code blocks?"* or *"What does `content.code.annotate` enable and how do I write annotations?"*
+2. Call `query-docs` with that ID and a specific question — for example, *"How do content tabs work with nested code blocks?"* or *"What does `content.code.annotate` enable and how are annotations written?"*
 
 Most of the rich Markdown syntax in Material comes from PyMdown Extensions, documented at <https://facelessuser.github.io/pymdown-extensions/> and reachable via Context7 as `/facelessuser/pymdown-extensions`. Tab syntax, collapsibles, snippets, and superfences all live there — query that library when the question is about how the syntax itself works, not how Material styles it.
 

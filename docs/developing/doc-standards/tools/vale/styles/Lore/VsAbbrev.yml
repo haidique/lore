@@ -1,0 +1,13 @@
+# Use lowercase `vs` with no period. Not `VS`, `vs.`, or `VS.`.
+# Documented in: docs/developing/doc-standards/canon/language.md#other-terms-to-avoid
+
+extends: existence
+message: "Use lowercase 'vs' with no period — not '%s'."
+link: docs/developing/doc-standards/canon/language.md#other-terms-to-avoid
+level: warning
+ignorecase: false
+nonword: true
+tokens:
+  - '\bVS\b'
+  - '\bvs\.'
+  - '\bVS\.'

@@ -1,0 +1,38 @@
+# Difficulty descriptors are flagged in Lore docs.
+# Documented in: docs/developing/doc-standards/canon/language.md#difficulty-descriptors
+#
+# Lore.Adverbs catches bare `easily` across all contexts. This rule
+# targets specific phrasings that imply an unsubstantiated claim of ease —
+# imperative softeners (`Just create ...`, `simply add ...`), passive ease
+# claims (`easily replaced`, `easily implementable`), and a few fixed
+# phrases. It deliberately does NOT match every appearance of `just` /
+# `simply` / `easily`. Those words have legitimate non-difficulty senses
+# (`just like`, `just a`, `breaks easily`, `is simply a list of`) that do
+# not belong to this rule.
+
+extends: existence
+message: "Don't claim ease with '%s' — difficulty is relative. Substantiate the claim or rewrite."
+link: docs/developing/doc-standards/canon/language.md#difficulty-descriptors
+level: warning
+ignorecase: true
+nonword: true
+tokens:
+  # Sentence-start `Just <imperative>` — the canonical "just do it"
+  # register. Vale splits prose into sentences before matching, so `^`
+  # anchors at each sentence start.
+  - '^just\s+(?:add|use|run|set|create|configure|delete|install|edit|paste|type|drop|copy|click|select|open|enable|disable|launch|start|stop|restart|build|deploy|push|pull|pick|choose|hit|tap|switch|toggle)\b'
+
+  # `simply <action-verb>` / `simply by <verbing>` — claim a step is trivial.
+  - '\bsimply\s+(?:add|adds|use|uses|run|runs|set|sets|create|creates|configure|configures|delete|deletes|install|installs|edit|edits|paste|pastes|drop|drops|copy|copies|click|clicks|select|selects|open|opens|enable|enables|disable|disables|by\s+\w+ing)\b'
+
+  # `easily <ease-action>` — claim of ease about an action on the system.
+  - '\beasily\s+(?:implement|configure|adopt|replace|control|customize|integrate|install|deploy|extend|modify|tweak|enable|disable|debug|verify|check|use|create|set|add|remove|update|maintain|migrate|port|build|test|manage|monitor)\w*\b'
+
+  # `easily <X>-able / <X>-ible` — passive ease claim.
+  - '\beasily\s+\w+(?:able|ible)\b'
+
+  # Fixed difficulty-implying phrase.
+  - '\ball you have to do is\b'
+
+  # Blanket — almost always belittles the reader, no legitimate alt-sense.
+  - '\bobviously\b'

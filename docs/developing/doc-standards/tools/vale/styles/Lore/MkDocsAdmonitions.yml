@@ -1,0 +1,11 @@
+# Lore docs use GFM alert syntax (> [!NOTE]), not MkDocs admonition syntax
+# (!!! note). Regression check.
+# Documented in: docs/developing/doc-standards/canon/format.md#callouts-and-admonitions
+
+extends: existence
+message: "MkDocs admonition syntax '%s' is not allowed. Use GFM alerts: > [!NOTE], > [!TIP], or > [!WARNING]."
+link: docs/developing/doc-standards/canon/format.md#callouts-and-admonitions
+level: error
+nonword: true
+tokens:
+  - '^!!! (?:note|tip|warning|info|important|caution|danger|abstract|example|question|success|failure|bug|quote)'

@@ -1,0 +1,22 @@
+# Git-isms that need writer judgment — either no Lore analog at all, or
+# multiple Lore analogs depending on intent. Flagged rather than substituted
+# because there is no single safe rewrite. Direct substitutions for Git terms
+# that DO have a clean 1:1 Lore equivalent (HEAD -> latest,
+# working copy -> working tree, and so on) live in GitIsmSubstitutions.yml.
+# Documented in: docs/developing/doc-standards/canon/language.md#lore-vocabulary-not-git-isms
+
+extends: existence
+message: "Git-ism '%s' needs Lore-specific framing — pick the Lore primitive that matches your intent (often `branch`, `layer`, or `link`). See language.md for guidance."
+link: docs/developing/doc-standards/canon/language.md#lore-vocabulary-not-git-isms
+level: warning
+ignorecase: true
+tokens:
+  - detached HEAD
+  - \bgit stash\b
+  - \bstashed\b
+  - \bstashing\b
+  - \brefspec\b
+  - \brefspecs\b
+  - \breflog\b
+  - \bsubmodule\b
+  - \bsubmodules\b

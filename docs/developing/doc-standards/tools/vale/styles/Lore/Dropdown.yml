@@ -1,0 +1,13 @@
+# `dropdown` is one word.
+# Documented in: docs/developing/doc-standards/canon/language.md#other-terms-to-avoid
+
+extends: substitution
+message: "Use '%s' instead of '%s'."
+link: docs/developing/doc-standards/canon/language.md#other-terms-to-avoid
+level: warning
+ignorecase: true
+action:
+  name: replace
+swap:
+  drop-down: dropdown
+  drop down: dropdown

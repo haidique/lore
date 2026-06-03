@@ -1,0 +1,12 @@
+{
+  "vale_version": ">=3.0.0",
+  "description": "Lore documentation style — prose rules for voice, vocabulary, product naming, and typography.",
+  "attributions": [
+    {
+      "source": "https://github.com/errata-ai/Microsoft",
+      "license": "MIT",
+      "copyright": "Copyright (c) 2018-2019 Joseph Kato",
+      "note": "Some rules derived from the errata-ai Microsoft Vale package. Rules have been adopted selectively and may diverge from the upstream package over time."
+    }
+  ]
+}

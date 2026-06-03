@@ -1,0 +1,23 @@
+# Perforce-isms with no Lore analog. Flag for the writer to rewrite around a
+# Lore primitive. Substitutions for Perforce terms that DO have a Lore analog
+# (changelist -> revision, and so on) live in PerforceIsmSubstitutions.yml.
+# Documented in: docs/developing/doc-standards/canon/language.md#lore-vocabulary-not-git-isms
+
+extends: existence
+message: "Perforce-ism '%s' has no Lore analog. Rewrite around a Lore primitive (typically a branch)."
+link: docs/developing/doc-standards/canon/language.md#lore-vocabulary-not-git-isms
+level: warning
+ignorecase: true
+tokens:
+  - \bdepot\b
+  - depot path
+  - depot paths
+  - \bshelve\b
+  - \bshelved\b
+  - \bshelving\b
+  - \bunshelve\b
+  - \bunshelved\b
+  - p4 client
+  - p4 clients
+  - p4 stream
+  - p4 streams
