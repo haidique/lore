@@ -53,6 +53,10 @@ pub struct ReplicaFactorySettings {
     pub use_grpc_write_replication: bool,
     #[serde(default = "default_quic_client_monitor_interval_secs")]
     pub quic_client_monitor_interval_seconds: u64,
+    /// Flag to dictate whether write replication should be enabled
+    /// for peers with the `SameRegion` locality.
+    #[serde(default = "default_enable_same_region_write")]
+    pub enable_same_region_write: bool,
 }
 
 fn default_read_replicas_enabled() -> bool {
@@ -61,6 +65,10 @@ fn default_read_replicas_enabled() -> bool {
 
 fn default_use_grpc_write_replication() -> bool {
     false
+}
+
+fn default_enable_same_region_write() -> bool {
+    true
 }
 
 #[derive(Debug)]
@@ -72,6 +80,7 @@ pub struct ReplicationStoreTargetFactory {
     read_replicas_enabled: bool,
     use_grpc_write_replication: bool,
     pub quic_monitor_interval: Duration,
+    pub enable_same_region_write: bool,
 }
 
 impl ReplicationStoreTargetFactory {
@@ -91,6 +100,7 @@ impl ReplicationStoreTargetFactory {
             read_replicas_enabled,
             use_grpc_write_replication,
             quic_monitor_interval: Duration::from_secs(default_quic_client_monitor_interval_secs()),
+            enable_same_region_write: true,
         }
     }
 
@@ -192,7 +202,7 @@ impl ReplicaFactory for ReplicationStoreTargetFactory {
         match peer_info.locality {
             Locality::SameRegion => {
                 appropriate_for_read = true;
-                appropriate_for_write = true;
+                appropriate_for_write = self.enable_same_region_write;
             }
             Locality::OtherRegion => {
                 appropriate_for_read = false;

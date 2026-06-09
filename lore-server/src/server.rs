@@ -1262,6 +1262,7 @@ async fn configure_composite_store(
         );
         factory.quic_monitor_interval =
             Duration::from_secs(factory_settings.quic_client_monitor_interval_seconds);
+        factory.enable_same_region_write = factory_settings.enable_same_region_write;
 
         composite_store_builder = composite_store_builder.with_replica_builder(Arc::new(factory));
     }
