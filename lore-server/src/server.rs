@@ -36,7 +36,6 @@ use lore_revision::runtime::execution_context;
 use lore_revision::store::composite::CompositeStoreBuilder;
 use lore_revision::store::remote::RemoteImmutableStore;
 use lore_revision::store::remote::RemoteMutableStore;
-use lore_storage::CompressionMode;
 use lore_storage::ImmutableStore;
 use lore_storage::MutableStore;
 use lore_storage::assume_server_policies;
@@ -1619,16 +1618,14 @@ async fn async_main(settings: (Settings, StringHash), config: ServerConfig) -> R
         }
     }));
 
-    // Backward compatibility safety.
-    // The server rarely writes data, and if it does it is small. Clients might not be able to
-    // decompress fragments that are created server side (like branch/repository metadata) so for
-    // safety, the only fragments the server creates should be NoCompression.
-    // Otherwise, modern servers will create data critical/foundation fragments for day to day
-    // operations that are incompatible with public clients, who will get stuck
-    COMPRESSION_MODE.store(
-        CompressionMode::NoCompression as u32,
-        std::sync::atomic::Ordering::Release,
-    );
+    if let Some(mode) = settings
+        .environment
+        .as_ref()
+        .and_then(|env| env.config.as_ref())
+        .and_then(|cfg| cfg.compression_mode.as_ref())
+    {
+        COMPRESSION_MODE.store(*mode as u32, std::sync::atomic::Ordering::Release);
+    }
 
     info!(
         "Registered plugins - immutable stores: {:?}, mutable stores: {:?}, lock stores: {:?}, topology: {:?}, notification: {:?}",
