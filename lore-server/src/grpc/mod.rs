@@ -66,10 +66,7 @@ use crate::util::resources_from_token;
 /// Matches the Infrastructure alerting rule regex
 /// for what counts as an internal status code error
 pub fn is_code_considered_server_error(code: &Code) -> bool {
-    matches!(
-        code,
-        Code::Internal | Code::Unavailable | Code::Unknown | Code::Cancelled
-    )
+    matches!(code, Code::Internal | Code::Unavailable | Code::Cancelled)
 }
 
 pub(crate) fn simple_map_message_handle_error(error: MessageHandleError) -> Status {
